@@ -1,7 +1,6 @@
 package com.twitter.basic.dtos.responses;
 
-import com.twitter.basic.model.Message;
-import com.twitter.basic.model.User;
+import com.twitter.basic.model.UserModel;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,7 +14,7 @@ public class MessageResponse
 
         private String messageDescription;
         private  String userName;
-        private Set<User> userLiked;
+        private Set<UserModel> userModelLiked;
 
 
 

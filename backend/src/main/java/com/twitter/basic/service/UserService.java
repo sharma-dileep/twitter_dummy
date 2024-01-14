@@ -5,4 +5,7 @@ import com.twitter.basic.dtos.responses.UserResponse;
 
 public interface UserService {
     UserResponse addUser(UserAddRequest userAddRequest);
+
+    Object messagesLikedByMe(Long userId);
+
 }
