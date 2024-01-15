@@ -14,13 +14,18 @@ public class ResponseMapper {
 
 
     public UserResponse fromUserToUserAddResponse(UserModel userModel){
-        return UserResponse.builder().userId(userModel.getId()).userName(userModel.getName()).messageSet(userModel.getMessageSet()).build();
+        return UserResponse.builder()
+                .userId(userModel.getId())
+                .userName(userModel.getName())
+                .messageSet(userModel.getMessageSet()).build();
     }
 
     public MessageResponse fromMessageToMessageResponse(Message message){
-        return MessageResponse.builder().messageDescription(message.getMessageContent()).userName(message.getUserModel().getName()).userModelLiked(
-                message.getLikedByUserModels()
-        ).build();
+        return MessageResponse.builder().
+                messageDescription(message.getMessageContent()).
+                userName(message.getUserModel().getName()).
+                userModelLiked(message.getLikedByUserModels()).
+                createdAt(message.getCreatedOn()).build();
     }
 
 

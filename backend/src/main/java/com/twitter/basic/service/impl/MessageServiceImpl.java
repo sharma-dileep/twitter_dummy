@@ -2,6 +2,8 @@ package com.twitter.basic.service.impl;
 
 import com.twitter.basic.dtos.requests.MessageAddRequest;
 import com.twitter.basic.dtos.requests.MessageEditRequest;
+import com.twitter.basic.dtos.responses.MessageResponse;
+import com.twitter.basic.exceptions.MessageNotFoundException;
 import com.twitter.basic.model.Message;
 import com.twitter.basic.model.UserModel;
 import com.twitter.basic.repository.MessageRepository;
@@ -12,6 +14,8 @@ import com.twitter.basic.utils.ResponseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -64,6 +68,27 @@ public class MessageServiceImpl implements MessageService {
         return responseMapper.fromMessageToMessageResponse(message);
 
 
+    }
+
+    @Override
+    public Object getAllMessages() {
+        Set<MessageResponse> messageResponseSet = new HashSet<>();
+
+        List<Message> messageSet = messageRepository.findAll();
+        for (Message message : messageSet)
+            messageResponseSet.add(responseMapper.fromMessageToMessageResponse(message));
+
+        return messageResponseSet;
+    }
+
+    @Override
+    public Object deleteMessage(Long messageId) {
+        if (messageRepository.findById(messageId).isEmpty())
+            return new MessageNotFoundException();
+
+        Message messageToBeDeleted = messageRepository.findById(messageId).get();
+        messageRepository.delete(messageToBeDeleted);
+        return "Message Deleted Successfully";
     }
 
 

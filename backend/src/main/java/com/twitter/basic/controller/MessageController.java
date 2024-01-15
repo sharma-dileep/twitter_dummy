@@ -22,21 +22,23 @@ public class MessageController {
     }
 
     @PatchMapping(Url.LIKE_OR_DISLIKE_MESSAGE)
-    public ResponseEntity<Object> likeOrDislikeMessage(
-            @RequestParam(name = "message_id") Long messageId,
-            @RequestParam(name = "liker_id") Long likerId
-    ) {
-
+    public ResponseEntity<Object> likeOrDislikeMessage(@RequestParam(name = "message_id") Long messageId, @RequestParam(name = "liker_id") Long likerId) {
         return ResponseEntity.ok(messageService.likeOrDislikeMessage(messageId, likerId));
-
     }
 
     @PatchMapping(Url.EDIT_MESSAGE)
-    public ResponseEntity<Object> editMessage(
-            @RequestBody MessageEditRequest messageEditRequest
-    ) {
-
+    public ResponseEntity<Object> editMessage(@RequestBody MessageEditRequest messageEditRequest) {
         return ResponseEntity.ok(messageService.editMessage(messageEditRequest));
+    }
+
+    @GetMapping(Url.GET_ALL_MESSAGES)
+    public ResponseEntity<Object> getAllMessages() {
+        return ResponseEntity.ok(messageService.getAllMessages());
+    }
+
+    @DeleteMapping(Url.DELETE_MESSAGE)
+    public ResponseEntity<Object> deleteMessage(@RequestParam(name = "message_id") Long messageId) {
+        return ResponseEntity.ok(messageService.deleteMessage(messageId));
 
     }
 

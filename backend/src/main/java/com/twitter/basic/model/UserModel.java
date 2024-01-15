@@ -20,11 +20,15 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false,unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "userModel")
+
+
+    @OneToMany(mappedBy = "userModel",fetch = FetchType.EAGER)
     private Set<Message> messageSet;
 
     @ManyToMany(mappedBy = "likedByUserModels",fetch = FetchType.EAGER)
     private Set<Message> likedByUsers;
+
 }

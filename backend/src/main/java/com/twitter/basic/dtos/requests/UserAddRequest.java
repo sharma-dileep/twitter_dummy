@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserAddRequest {
     private String userName;
+    private Boolean isNewUser;
 }

@@ -9,4 +9,7 @@ public interface MessageService {
 
     Object likeOrDislikeMessage(Long messageId, Long likerId);
 
+    Object getAllMessages();
+
+    Object deleteMessage(Long messageId);
 }

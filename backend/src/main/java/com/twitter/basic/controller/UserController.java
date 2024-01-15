@@ -12,19 +12,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-
-public class UserController{
-
-
+public class UserController {
     @Autowired
     private UserService userService;
+
     @PostMapping(Url.ADD_USER)
-    public ResponseEntity<Object> addUser( @RequestBody UserAddRequest userAddRequest){
+    public ResponseEntity<Object> addUser(@RequestBody UserAddRequest userAddRequest) {
         return ResponseEntity.ok(userService.addUser(userAddRequest));
     }
 
     @GetMapping(Url.GET_USER)
-    public ResponseEntity<Object> getUser( @RequestParam(name = "user_id") Long userId){
+    public ResponseEntity<Object> getUser(@RequestParam(name = "user_id") Long userId) {
         return ResponseEntity.ok(userService.messagesLikedByMe(userId));
+    }
+
+    @GetMapping(Url.GET_ALL_MESSAGES_FOR_USER)
+    public ResponseEntity<Object> getAllMessages(@RequestParam(name = "user_id") Long userId) {
+        return ResponseEntity.ok(userService.getALlMessages(userId));
     }
 }

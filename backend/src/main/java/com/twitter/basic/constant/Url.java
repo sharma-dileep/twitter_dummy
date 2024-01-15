@@ -9,4 +9,6 @@ public static final String GET_USER = "/user/get-user";
     public static final String LIKE_OR_DISLIKE_MESSAGE = "/message/lordl";
     public static final String DELETE_MESSAGE ="/message/delete-message";
     public static final String updateMessage ="/message/update-message";
+    public static final String GET_ALL_MESSAGES_FOR_USER = "/user/get-all-message";
+    public static final String GET_ALL_MESSAGES = "/message/get-all-message";
 }

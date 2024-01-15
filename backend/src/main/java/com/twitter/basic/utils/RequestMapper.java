@@ -15,12 +15,16 @@ public class RequestMapper {
 
     @Autowired
     private UserRepository userRepository;
-    public UserModel fromUserAddRequestToUser(UserAddRequest userAddRequest){
+
+    public UserModel fromUserAddRequestToUser(UserAddRequest userAddRequest) {
         return UserModel.builder().name(userAddRequest.getUserName()).build();
     }
 
-    public Message fromMessageAddRequestToMessage(MessageAddRequest messageAddRequest){
-        return Message.builder().messageContent(messageAddRequest.getMessageContent()).userModel(userRepository.findById(messageAddRequest.getUserId()).get()).build();
+
+    public Message fromMessageAddRequestToMessage(MessageAddRequest messageAddRequest) {
+        return Message.builder().messageContent(messageAddRequest.getMessageContent())
+                .userModel(userRepository.findById(messageAddRequest.getUserId()).get())
+                .createdOn(messageAddRequest.getCreatedAt()).build();
     }
 
 }
