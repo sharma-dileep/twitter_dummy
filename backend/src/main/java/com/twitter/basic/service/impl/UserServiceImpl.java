@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Object messagesLikedByMe(Long userId) {
-        return (userRepository.findById(userId).get().getLikedByUsers());
+        return (userRepository.findById(userId).get().getMessageSetLikedByMe());
     }
 
     @Override

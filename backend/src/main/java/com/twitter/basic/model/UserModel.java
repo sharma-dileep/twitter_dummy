@@ -29,6 +29,6 @@ public class UserModel {
     private Set<Message> messageSet;
 
     @ManyToMany(mappedBy = "likedByUserModels",fetch = FetchType.EAGER)
-    private Set<Message> likedByUsers;
+    private Set<Message> messageSetLikedByMe;
 
 }

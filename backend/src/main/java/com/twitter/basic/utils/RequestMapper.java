@@ -23,8 +23,7 @@ public class RequestMapper {
 
     public Message fromMessageAddRequestToMessage(MessageAddRequest messageAddRequest) {
         return Message.builder().messageContent(messageAddRequest.getMessageContent())
-                .userModel(userRepository.findById(messageAddRequest.getUserId()).get())
-                .createdOn(messageAddRequest.getCreatedAt()).build();
+                .userModel(userRepository.findById(messageAddRequest.getUserId()).get()).build();
     }
 
 }
